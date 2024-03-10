@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-
+import { v4 as uuidv4 } from 'uuid';
 
 export const TaskStateContext = createContext();
 const LOCAL_STORAGE_KEY = "todo:savedTasks";
@@ -28,7 +28,7 @@ const TaskContext = ({children}) => {
     setTasksAndSave([
       ...tasks,
       {
-        id: crypto.randomUUID(),//function from browsers to generate unique ids
+        id: uuidv4(),
         title: taskTitle,
         description: taskDescription,
         isCompleted: false,
